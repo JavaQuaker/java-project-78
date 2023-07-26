@@ -1,43 +1,55 @@
 package hexlet.code;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
+//import java.util.Objects;
+
 import java.util.function.Predicate;
 
 public class StringSchema extends BaseClass {
-    static Map<String, Predicate> check = new LinkedHashMap<>();
+    static Map<String, Predicate<Object>> check = new LinkedHashMap<>();
 
-    static boolean required;
-    private int minLength;
-    private String contains;
 
-    @Override
-    public StringSchema string() {
-        return null;
-    }
+    static int stringLength;
+    static String count;
+
 
     // проверка на пустоту
-   public StringSchema required() {
-        this.required = true;
-        check.put("required", r -> Objects.equals(r, null));
+    public StringSchema required() {
+        check.put("required", str -> false);
         return this;
-   }
+    }
     // ограничение минимальной длины
-    public StringSchema minLength(int minLength) {
-        this.minLength = minLength;
-       check.put("minLength", (Predicate<String>) str -> str.length() >= minLength);
+    public StringSchema minLength(int min) {
+        check.put("minLength", str -> str.toString().length() >= min);
+        stringLength = min;
         return this;
+
     }
     // ограничение содержимого строки
-    public StringSchema contains(String contains) {
-        this.contains = contains;
-        check.put("contains", (Predicate<String>) str -> str.contains(contains));
+    public StringSchema contains(String string) {
+        check.put("contains", str -> str.toString().contains(string));
+        count = string;
         return this;
     }
-
-    @Override
     public Boolean isValid(Object object) {
-        return true;
-    }
+        if (!check.containsKey("required") & (check.get("minLength") == null) | (check.get("contains") == null)) {
+            return true;
+        }
+        if (check.containsKey("required") & (check.get("minLength") == null)
+                | (check.get("contains") == null)) {
+            return false;
+        }
 
+        return true;
+
+
+//        if (check.get("minLength").test(stringLength)) {
+//            return true;
+//        }
+//        if (check.get("contains").test(count)) {
+//            return true;
+
+    }
 }
+
+
