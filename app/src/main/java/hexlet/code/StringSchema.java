@@ -1,5 +1,6 @@
 package hexlet.code;
 
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 //import java.util.Objects;
@@ -16,7 +17,7 @@ public class StringSchema extends BaseClass {
 
     // проверка на пустоту
     public StringSchema required() {
-        check.put("required", str -> str instanceof String && ((String) str).isEmpty());
+        check.put("required", str -> str instanceof String && !((String) str).isEmpty());
         return this;
     }
 
@@ -36,20 +37,39 @@ public class StringSchema extends BaseClass {
     }
 
     public Boolean isValid(Object object) {
-
-        if ((!check.containsKey("required")) & ((check.get("minLength")) == null || (check.get("contains") == null))) {
+        if ((object == null) & (!check.containsKey("required"))) {
             return true;
-        } else if ((check.containsKey("required")) & ((check.get("minLength") == null)
-                & (check.get("contains") == null))) {
+        } else if ((object == null) & (check.containsKey("required"))) {
             return false;
+        }
+        if ((object.equals("") & (!check.containsKey("required")))) {
+            return true;
+        } else if ((object.equals("") & (check.containsKey("required")))) {
+            return false;
+        } else if ((!check.containsKey("required") & (!check.containsKey("minLength")
+                & (!check.containsKey("contains"))))) {
+            return true;
+        } else if ((check.containsKey("required") & (!check.containsKey("minLength")
+                & (!check.containsKey("contains"))))) {
+            return false;
+        }
 
 
-        } else if (check.containsKey("minLength") && (check.containsKey("contains"))) {
-            return check.get("minLength").test(object) && check.get("contains").test(object);
-        } else if (check.containsKey("minLength")) {
-            return check.get("minLength").test(object);
-        } else if (check.containsKey("contains")) {
-            return check.get("contains").test(object);
+        Boolean[] array;
+        for (Map.Entry<String, Predicate<Object>> result : check.entrySet()) {
+
+            Predicate<Object> value = result.getValue();
+
+            Boolean bool = value.test(object);
+
+            array = new Boolean[]{bool};
+
+            for (int i = 0; i < array.length; i++) {
+                if (!array[i]) {
+                    return false;
+                }
+
+            }
         }
         return true;
     }

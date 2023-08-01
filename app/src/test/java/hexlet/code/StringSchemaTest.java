@@ -8,12 +8,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringSchemaTest {
 
 
+//    @Test
+//    public void isValidTest() {
+//        Validator v = new Validator();
+//        StringSchema schema = v.string();
+//        assertThat(schema.isValid("")).isTrue();
+//        assertThat(schema.isValid(null)).isTrue();
+//    }
+//    @Test
+//    public void isValidTestSchema() {
+//        Validator v = new Validator();
+//        StringSchema schema = v.string().minLength(5).contains("qw");
+//        assertThat(schema.isValid("")).isTrue();
+//        assertThat(schema.isValid(null)).isTrue();
+//        schema.required();
+//        assertThat(schema.isValid("")).isFalse();
+//        assertThat(schema.isValid(null)).isFalse();
+//        assertThat(schema.isValid("qwerty")).isTrue();
+//
+//
+//    }
     @Test
-    public void isValidTest() {
+    public void isValidTestSchemaRequired() {
         Validator v = new Validator();
-        StringSchema schema = v.string();
-        assertThat(schema.isValid("")).isTrue();
-        assertThat(schema.isValid(null)).isTrue();
+        StringSchema schema = v.string().minLength(5).contains("qw");
+        schema.required();
+        assertThat(schema.isValid("")).isFalse();
     }
 
 
