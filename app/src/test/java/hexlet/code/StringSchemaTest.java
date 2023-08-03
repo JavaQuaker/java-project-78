@@ -8,28 +8,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringSchemaTest {
 
 
-//    @Test
-//    public void isValidTest() {
-//        Validator v = new Validator();
-//        StringSchema schema = v.string();
-//        assertThat(schema.isValid("")).isTrue();
-//        assertThat(schema.isValid(null)).isTrue();
-//    }
-//    @Test
-//    public void isValidTestSchema() {
-//        Validator v = new Validator();
-//        StringSchema schema = v.string().minLength(5).contains("qw");
-//        assertThat(schema.isValid("")).isTrue();
-//        assertThat(schema.isValid(null)).isTrue();
-//        schema.required();
-//        assertThat(schema.isValid("")).isFalse();
-//        assertThat(schema.isValid(null)).isFalse();
-//        assertThat(schema.isValid("qwerty")).isTrue();
-//
-//
-//    }
     @Test
-    public void isValidTestSchemaRequired() {
+    public void isValidStringSchemaTest() {
+        Validator v = new Validator();
+        StringSchema schema = v.string();
+        assertThat(schema.isValid("")).isTrue();
+        assertThat(schema.isValid(null)).isTrue();
+    }
+    @Test
+    public void isValidStringSchema() {
+        Validator v = new Validator();
+        StringSchema schema = v.string().minLength(5).contains("qw");
+        schema.required();
+        assertThat(schema.isValid("")).isFalse();
+        assertThat(schema.isValid(null)).isFalse();
+        assertThat(schema.isValid("qwerty")).isTrue();
+
+
+    }
+    @Test
+    public void isValidStringSchemaRequired() {
         Validator v = new Validator();
         StringSchema schema = v.string().minLength(5).contains("qw");
         schema.required();
@@ -38,7 +36,7 @@ public class StringSchemaTest {
 
 
     @Test
-    public void requiredTest() {
+    public void stringSchemaRequiredTest() {
         Validator v = new Validator();
         StringSchema schema = v.string();
         schema.required();
@@ -53,7 +51,7 @@ public class StringSchemaTest {
     }
 
     @Test
-    public void requiredTestMinLength() {
+    public void stringSchemaRequiredTestMinLength() {
         Validator v = new Validator();
         StringSchema schema = v.string().minLength(5);
         schema.required();
@@ -61,7 +59,7 @@ public class StringSchemaTest {
     }
 
     @Test
-    public void requiredTestContains() {
+    public void stringSchemaRequiredTestContains() {
         Validator v = new Validator();
         StringSchema schema = v.string().contains("qwe");
         schema.required();
@@ -69,7 +67,7 @@ public class StringSchemaTest {
     }
 
     @Test
-    public void requiredTestMinLengthContains() {
+    public void stringSchemaRequiredTestMinLengthContains() {
         Validator v = new Validator();
         StringSchema schema = v.string().minLength(6).contains("qwe");
         schema.required();
@@ -78,7 +76,7 @@ public class StringSchemaTest {
 
 
     @Test
-    public void containsTest() {
+    public void stringSchemaContainsTest() {
         Validator v = new Validator();
         StringSchema schema = v.string();
         schema.required();

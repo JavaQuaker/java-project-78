@@ -1,14 +1,14 @@
 package hexlet.code;
 
 
-import java.util.LinkedHashMap;
+
 import java.util.Map;
-//import java.util.Objects;
+
 
 import java.util.function.Predicate;
 
-public class StringSchema extends BaseClass {
-    static Map<String, Predicate<Object>> check = new LinkedHashMap<>();
+public class StringSchema extends BaseSchema {
+//    static Map<String, Predicate<Object>> check = new LinkedHashMap<>();
 
 
     static int stringLength;
@@ -17,29 +17,43 @@ public class StringSchema extends BaseClass {
 
     // проверка на пустоту
     public StringSchema required() {
-        check.put("required", str -> str instanceof String && !((String) str).isEmpty());
+//        check.put("required", str -> str instanceof String && !((String) str).isEmpty());
+//        return this;
+        addCheck("required", value -> {
+            if (value instanceof String && !((String) value).isEmpty()) {
+                return true;
+            } else if (!(value instanceof String)) {
+                return false;
+            }
+            return true;
+        });
         return this;
     }
 
     // ограничение минимальной длины
     public StringSchema minLength(int min) {
-        check.put("minLength", str -> str.toString().length() >= min);
+//        check.put("minLength", str -> str.toString().length() >= min);
         stringLength = min;
+//        return this;
+        addCheck("minLength", value -> value.toString().length() >= min);
         return this;
 
     }
 
     // ограничение содержимого строки
-    public StringSchema contains(String string) {
-        check.put("contains", str -> str.toString().contains(string));
-        count = string;
+    public StringSchema contains(String substring) {
+//        check.put("contains", str -> str.toString().contains(string));
+        count = substring;
+//        return this;
+        addCheck("contains", value -> ((String) value).contains(substring));
         return this;
     }
-
     public Boolean isValid(Object object) {
         if ((object == null) & (!check.containsKey("required"))) {
             return true;
         } else if ((object == null) & (check.containsKey("required"))) {
+            return false;
+        } else if (!(object instanceof String)) {
             return false;
         }
         if ((object.equals("") & (!check.containsKey("required")))) {
@@ -73,6 +87,7 @@ public class StringSchema extends BaseClass {
         }
         return true;
     }
+
 }
 
 
