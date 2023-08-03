@@ -20,7 +20,6 @@ public class NumberSchema extends BaseSchema {
     public NumberSchema required() {
 
         addCheck("required", value -> {
-//            return (value instanceof Integer) & (value != null) & (check.containsKey("required"));
             if ((value instanceof Integer) & (value != null) & (check.containsKey("required"))) {
                 return true;
             } else {
@@ -42,21 +41,11 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
     public Boolean isValid(Object object) {
-
-
         if ((object == null) & (!check.containsKey("required"))) {
             return true;
         } else if ((object == null) & (check.containsKey("required"))) {
             return false;
 
-//        if ((object.equals("") & (!check.containsKey("required")))) {
-//            return true;
-//        } else if ((object.equals("") & (check.containsKey("required")))) {
-//            return false;
-//        }
-//        } else if ((!check.containsKey("required") & (!check.containsKey("positive")
-//                & (!check.containsKey("range"))))) {
-//            return true;
         } else if (!(object instanceof Integer)) {
             return false;
         } else if ((check.containsKey("required") & (!check.containsKey("positive")

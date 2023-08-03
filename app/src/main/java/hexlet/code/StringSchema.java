@@ -17,8 +17,6 @@ public class StringSchema extends BaseSchema {
 
     // проверка на пустоту
     public StringSchema required() {
-//        check.put("required", str -> str instanceof String && !((String) str).isEmpty());
-//        return this;
         addCheck("required", value -> {
             if (value instanceof String && !((String) value).isEmpty()) {
                 return true;
@@ -32,9 +30,7 @@ public class StringSchema extends BaseSchema {
 
     // ограничение минимальной длины
     public StringSchema minLength(int min) {
-//        check.put("minLength", str -> str.toString().length() >= min);
         stringLength = min;
-//        return this;
         addCheck("minLength", value -> value.toString().length() >= min);
         return this;
 
@@ -42,9 +38,7 @@ public class StringSchema extends BaseSchema {
 
     // ограничение содержимого строки
     public StringSchema contains(String substring) {
-//        check.put("contains", str -> str.toString().contains(string));
         count = substring;
-//        return this;
         addCheck("contains", value -> ((String) value).contains(substring));
         return this;
     }
@@ -82,7 +76,6 @@ public class StringSchema extends BaseSchema {
                 if (!array[i]) {
                     return false;
                 }
-
             }
         }
         return true;
