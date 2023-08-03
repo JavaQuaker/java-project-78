@@ -9,4 +9,8 @@ public class Validator {
         NumberSchema.check.clear();
         return new NumberSchema();
     }
+    public MapSchema map() {
+        MapSchema.check.clear();
+        return new MapSchema();
+    }
 }
