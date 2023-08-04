@@ -31,19 +31,16 @@ public class MapSchema extends BaseSchema {
     }
 
     public MapSchema shape(Map<String, BaseSchema> map) {
-        addCheck("shape", addCheck("required", value -> {
-            if ((value instanceof String) && ((String) value).isEmpty()) {
-                return true;
-            } else if (!(value instanceof String)) {
-                return false;
+        addCheck("shape", value -> {
+            for (Map.Entry<String, BaseSchema> result : map.entrySet()) {
+                if (result.getValue().isValid(((Map<?,?>) value).get(value))) {
+                    return true;
+                }
             }
+            return false;
         });
+        return this;
     }
-
-//
-
-
-
 
 
 
