@@ -30,6 +30,23 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
+    public MapSchema shape(Map<String, BaseSchema> map) {
+        addCheck("shape", addCheck("required", value -> {
+            if ((value instanceof String) && ((String) value).isEmpty()) {
+                return true;
+            } else if (!(value instanceof String)) {
+                return false;
+            }
+        });
+    }
+
+//
+
+
+
+
+
+
     @Override
     public Boolean isValid(Object object) {
         if ((object == null) & (!check.containsKey("required"))) {

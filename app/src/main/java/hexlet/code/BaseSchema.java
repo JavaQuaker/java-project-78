@@ -10,8 +10,8 @@ public abstract class BaseSchema {
     }
 
 
-    public abstract StringSchema minLength(int minLength);
-    public abstract StringSchema contains(String contains);
+    public abstract BaseSchema minLength(int minLength);
+    public abstract BaseSchema contains(String contains);
     public abstract Boolean isValid(Object object);
 
 }

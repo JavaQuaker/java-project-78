@@ -8,9 +8,6 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public class StringSchema extends BaseSchema {
-//    static Map<String, Predicate<Object>> check = new LinkedHashMap<>();
-
-
     static int stringLength;
     static String count;
 
