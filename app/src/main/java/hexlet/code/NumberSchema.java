@@ -8,15 +8,15 @@ import java.util.function.Predicate;
 public class NumberSchema extends BaseSchema {
 
 
-    @Override
-    public StringSchema minLength(int minLength) {
-        return null;
-    }
-
-    @Override
-    public StringSchema contains(String contains) {
-        return null;
-    }
+//    @Override
+//    public StringSchema minLength(int minLength) {
+//        return null;
+//    }
+//
+//    @Override
+//    public StringSchema contains(String contains) {
+//        return null;
+//    }
     public NumberSchema required() {
 
         addCheck("required", value -> {

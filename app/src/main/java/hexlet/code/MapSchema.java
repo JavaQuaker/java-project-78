@@ -6,15 +6,15 @@ import java.util.function.Predicate;
 public class MapSchema extends BaseSchema {
 
 
-    @Override
-    public StringSchema minLength(int minLength) {
-        return null;
-    }
-
-    @Override
-    public StringSchema contains(String contains) {
-        return null;
-    }
+//    @Override
+//    public StringSchema minLength(int minLength) {
+//        return null;
+//    }
+//
+//    @Override
+//    public StringSchema contains(String contains) {
+//        return null;
+//    }
     public MapSchema required() {
         addCheck("required", value -> {
             if ((value instanceof Map) & (value != null) & (check.containsKey("required"))) {
@@ -29,7 +29,8 @@ public class MapSchema extends BaseSchema {
         addCheck("sizeof", value -> ((Map<?, ?>) value).size() == countMap);
         return this;
     }
-
+//BaseSchema bs = schemas.get("name");
+//boolean isValid = bs.isValid();
     public MapSchema shape(Map<String, BaseSchema> map) {
         addCheck("shape", value -> {
             for (Map.Entry<String, BaseSchema> result : map.entrySet()) {
