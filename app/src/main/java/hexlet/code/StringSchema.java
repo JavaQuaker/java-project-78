@@ -1,13 +1,13 @@
 package hexlet.code;
-
-
-
+import java.util.LinkedHashMap;
 import java.util.Map;
-
-
 import java.util.function.Predicate;
 
 public class StringSchema extends BaseSchema {
+    protected Map<String, Predicate<Object>> check = new LinkedHashMap<>();
+    public void addCheck(String name, Predicate<Object> validate) {
+        check.put(name, validate);
+    }
     static int stringLength;
     static String count;
 

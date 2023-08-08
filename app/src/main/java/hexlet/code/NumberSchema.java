@@ -1,22 +1,18 @@
 package hexlet.code;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
 
 
 public class NumberSchema extends BaseSchema {
+    protected Map<String, Predicate<Object>> check = new LinkedHashMap<>();
+    public void addCheck(String name, Predicate<Object> validate) {
+        check.put(name, validate);
+    }
 
 
-//    @Override
-//    public StringSchema minLength(int minLength) {
-//        return null;
-//    }
-//
-//    @Override
-//    public StringSchema contains(String contains) {
-//        return null;
-//    }
     public NumberSchema required() {
 
         addCheck("required", value -> {
