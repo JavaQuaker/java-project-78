@@ -1,17 +1,9 @@
 package hexlet.code;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.function.Predicate;
-
-
-
 public class NumberSchema extends BaseSchema {
-    protected Map<String, Predicate<Object>> check = new LinkedHashMap<>();
     public void addCheck(String name, Predicate<Object> validate) {
         check.put(name, validate);
     }
-
 
     public NumberSchema required() {
 
@@ -26,7 +18,10 @@ public class NumberSchema extends BaseSchema {
     }
     public NumberSchema positive() {
         addCheck("positive", value -> {
-            return (int) value > 0;
+            if (value instanceof Integer) {
+                return (int) value > 0;
+            }
+            return false;
         });
         return this;
     }
@@ -36,34 +31,4 @@ public class NumberSchema extends BaseSchema {
         });
         return this;
     }
-    public Boolean isValid(Object object) {
-        if ((object == null) & (!check.containsKey("required"))) {
-            return true;
-        } else if ((object == null) & (check.containsKey("required"))) {
-            return false;
-
-        } else if (!(object instanceof Integer)) {
-            return false;
-        } else if ((check.containsKey("required") & (!check.containsKey("positive")
-                & (!check.containsKey("range"))))) {
-            return false;
-        }
-
-        Boolean[] array;
-
-        for (Map.Entry<String, Predicate<Object>> result : check.entrySet()) {
-
-            Predicate<Object> value = result.getValue();
-            Boolean bool = value.test(object);
-            array = new Boolean[]{bool};
-            for (int i = 0; i < array.length; i++) {
-                if (!array[i]) {
-                    return false;
-                }
-
-            }
-        }
-        return true;
-    }
-
 }
