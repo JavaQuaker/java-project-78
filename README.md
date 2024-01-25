@@ -28,16 +28,29 @@ NumberSchema schema = v.number();
 schema.isValid(null); // true
 schema.positive().isValid(null); // true
 schema.required();
-schema.isValid(null); // false
 schema.isValid("5"); // false
-schema.isValid(10); // true
-// Потому что ранее мы вызвали метод positive()
-schema.isValid(-10); // false
-//  Ноль — не положительное число
-schema.isValid(0); // false
 schema.range(5, 10);
 schema.isValid(5); // true
-schema.isValid(10); // true
 schema.isValid(4); // false
-schema.isValid(11); // false
+
+
+//Валидация объектов типа Map
+Validator v = new Validator();
+MapSchema schema = v.map();
+schema.isValid(null); // false
+schema.isValid(new HashMap()); // true
+Map<String, String> data = new HashMap<>();
+data.put("key1", "value1");
+schema.isValid(data); // true
+
+//Вложенная валидация
+Validator v = new Validator();
+MapSchema schema = v.map();
+schemas.put("name", v.string().required());
+schemas.put("age", v.number().positive());
+schema.shape(schemas);
+Map<String, Object> human1 = new HashMap<>();
+human1.put("name", "Kolya");
+human1.put("age", 100);
+schema.isValid(human1); // true
 ```
