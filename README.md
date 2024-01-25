@@ -13,6 +13,10 @@
 </ul></p>
 
 <h3>Пример использования</h3>
-<p>
-schema.contains("what").isValid("what does the fox say"); // true</p>
-<p>schema.contains("whatthe").isValid("what does the fox say"); // false</p>
+
+```
+Validator v = new Validator();
+StringSchema schema = v.string();
+schema.contains("what").isValid("what does the fox say"); // true
+schema.contains("whatthe").isValid("what does the fox say"); // false
+```
