@@ -14,7 +14,9 @@
 
 <h3>Пример использования</h3>
 
+
 ```
+//Валидатор строк
 Validator v = new Validator();
 StringSchema schema = v.string();
 schema.contains("what").isValid("what does the fox say"); // true
