@@ -11,3 +11,28 @@
   <li>создается и настраивается схему проверки данных </li>
   <li>после этого проводим проверку данных, используя ранее созданную схему</li>
 </ul></p>
+
+<h3>Пример использования</h3>
+<p>import hexlet.code.Validator;
+import hexlet.code.schemas.StringSchema;
+
+Validator v = new Validator();
+
+StringSchema schema = v.string();
+
+// Пока не вызван метод required(), null и пустая строка считаются валидным
+schema.isValid(""); // true
+schema.isValid(null); // true
+
+schema.required();
+
+schema.isValid(null); // false
+schema.isValid(""); // false
+schema.isValid(5); // false
+schema.isValid("what does the fox say"); // true
+schema.isValid("hexlet"); // true
+
+schema.contains("wh").isValid("what does the fox say"); // true
+schema.contains("what").isValid("what does the fox say"); // true
+schema.contains("whatthe").isValid("what does the fox say"); // false
+</p>
