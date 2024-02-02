@@ -2,7 +2,8 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/JavaQuaker/java-project-78/workflows/hexlet-check/badge.svg)](https://github.com/JavaQuaker/java-project-78/actions)
-[![Action Status](https://github.com/JavaQuaker/java-project-78/workflows/Java CI/actions)
+[![Actions Status](https://github.com/JavaQuaker/java-project-78/workflows/Java CI/badge.svg)]
+(https://github.com/JavaQuaker/java-project-78/actions)
 ____________________________________________________________________________________________________________________________________________________________
 
 <h3>Описание:</h3>
