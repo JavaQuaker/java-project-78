@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import hexlet.code.schemas.StringSchema;
-import hexlet.code.schemas.Validator;
 import org.junit.jupiter.api.Test;
 
 

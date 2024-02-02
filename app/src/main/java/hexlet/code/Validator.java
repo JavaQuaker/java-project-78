@@ -1,5 +1,10 @@
-package hexlet.code.schemas;
-public class Validator {
+package hexlet.code;
+
+import hexlet.code.schemas.MapSchema;
+import hexlet.code.schemas.NumberSchema;
+import hexlet.code.schemas.StringSchema;
+
+public final class Validator {
     public StringSchema string() {
         return new StringSchema();
     }
