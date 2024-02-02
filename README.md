@@ -2,7 +2,7 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/JavaQuaker/java-project-78/workflows/hexlet-check/badge.svg)](https://github.com/JavaQuaker/java-project-78/actions)
-![example branch parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=feature-1)
+![example branch parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=main)
 ____________________________________________________________________________________________________________________________________________________________
 
 <h3>Описание:</h3>
