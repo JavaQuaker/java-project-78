@@ -1,4 +1,5 @@
-package hexlet.code;
+package hexlet.code.schemas;
+
 import java.util.function.Predicate;
 public class NumberSchema extends BaseSchema {
     public void addCheck(String name, Predicate<Object> validate) {

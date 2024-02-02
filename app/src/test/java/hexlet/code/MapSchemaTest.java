@@ -1,4 +1,7 @@
 package hexlet.code;
+import hexlet.code.schemas.BaseSchema;
+import hexlet.code.schemas.MapSchema;
+import hexlet.code.schemas.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.schemas.NumberSchema;
+import hexlet.code.schemas.Validator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
