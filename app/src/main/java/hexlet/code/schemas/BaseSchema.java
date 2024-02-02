@@ -1,11 +1,20 @@
 package hexlet.code.schemas;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+
 import java.util.Map;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema {
-    protected Map<String, Predicate<Object>> check = new LinkedHashMap<>();
+
+
+//    protected Map<String, Predicate<Object>> check = new LinkedHashMap<>();
+    final Map<String, Predicate<Object>> check;
+
+    protected BaseSchema() {
+        this.check = new HashMap<>();
+    }
+
 
     public abstract void addCheck(String name, Predicate<Object> validate);
 
